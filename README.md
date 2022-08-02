@@ -16,10 +16,13 @@ Make sure to have [watson](https://tailordev.github.io/Watson/) installed.
 
 ## Installation
 
-`bash init.sh /path/to/repo -h <hour> -m <minute>`
-The above command installs the script in `/usr/local/bin/` with the full script path as `/usr/local/bin/william.sh`.
+- `bash init.sh /path/to/repo -h <hour> -m <minute>`
+- The above command installs the script in `/usr/local/bin/` with the full script path as `/usr/local/bin/william.sh`.
 
-**example**: `bash init.sh /arshi/documents/my_log_repo -h 22 -m 08`
+**Example**:
+
+- `bash init.sh /arshi/documents/my_log_repo -h 22 -m 08`
+- The above example results in the william cron running every day at 10:08 PM (22:08 hours).
 
 ## Post-Installation
 
