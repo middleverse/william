@@ -2,7 +2,9 @@
 echo "Initializing William."
 
 # TASK: add william as a cronjob
-# write out current crontab
+# ==============================
+
+# save current crontab tasks
 crontab -l > mycron
 
 # copy script to /usr/local/bin
