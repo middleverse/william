@@ -4,7 +4,15 @@
 
 ## Pre-Installation
 
+### Install Watson
+
 Make sure to have [watson](https://tailordev.github.io/Watson/) installed.
+
+### Create Log Repo
+
+1. Create a separate GitHub repo for logs.
+2. Clone the repo on to the dev machine(s). 
+3. Give the absolute path to this repo to the installation below.
 
 ## Installation
 
