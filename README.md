@@ -8,7 +8,7 @@
 
 Make sure to have [watson](https://tailordev.github.io/Watson/) installed.
 
-### Create Log Repo
+### Create A Logging Repo
 
 1. Create a separate GitHub repo for logs.
 2. Clone the repo on to the dev machine(s). 
@@ -16,9 +16,10 @@ Make sure to have [watson](https://tailordev.github.io/Watson/) installed.
 
 ## Installation
 
-`bash init.sh`
-
+`bash init.sh /path/to/repo -h <hour> -m <minute>`
 The above command installs the script in `/usr/local/bin/` with the full script path as `/usr/local/bin/william.sh`.
+
+**example**: `bash init.sh /arshi/documents/my_log_repo -h 22 -m 08`
 
 ## Post-Installation
 
