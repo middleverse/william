@@ -4,20 +4,28 @@ echo "Initializing William."
 # TASK: add william as a cronjob
 # ==============================
 
+# parse args
+export WILLAIM_PATH_TO_LOGGER=$1
+export WILLIAM_GITHUB_USERNAME=$2
+export WILLIAM_GITHUB_EMAIL=$3
+
 # save current crontab tasks
 crontab -l > mycron
 
-# copy script to /usr/local/bin
-cp william.sh /usr/local/bin/william.sh
+# create cron storage directory
+[ ! -d "$HOME/bin" ] && mkdir $HOME/bin && echo "> bin created"
+
+# copy script to store locally
+cp william.sh $HOME/bin/william.sh
+echo "> copied script"
 
 # insert new cron job
-echo "01 22 * * * bash /usr/local/bin/william.sh" >> mycron
+echo "*/1 * * * * bash $HOME/bin/william.sh" >> mycron
 
 # install new cron file and get rid of the temp cron
-crontab mycron && rm mycron
+crontab mycron && rm mycron && echo "> removed cron"
 
-echo "William is at your service."
-echo "Your productivity metrics through watson will have "
+echo "> William is at your service."
 
 # POST INSTALL OVERVIEW
 # =====================

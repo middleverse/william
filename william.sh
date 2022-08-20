@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "welcome to the william cron"
 
-touch ~/Repos/william_touch.txt
+touch $HOME/bin/william_temp.txt
+
