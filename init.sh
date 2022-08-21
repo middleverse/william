@@ -27,6 +27,10 @@ crontab mycron && rm mycron && echo "> removed cron"
 
 echo "> William is at your service."
 
+echo "> Setting up mackenzie"
+
+[ ! -d "$HOME/bin/mackenzie" ] && git clone https://github.com/middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie ready"
+
 # POST INSTALL OVERVIEW
 # =====================
 # a cron that runs daily at the specified
