@@ -1,6 +1,6 @@
 #!/bin/bash
 YEARMONTH=$(date +"%Y-%m")
-SECOND=$(date +"%s")
+DELIMITER=","
 
 cd $HOME/bin/mackenzie
 
@@ -9,11 +9,13 @@ git pull
 # create log file if it doesn't exit
 if [[ ! -f "${YEARMONTH}.txt" ]]
 then 
-    touch ${YEARMONTH}.txt && echo "> today's log file created"
+    touch ${YEARMONTH}.txt && echo "> today's log file created" && DELIMITER=""
 fi
 
+DUMP=$(watson report --day --json)
+
 # add to file
-echo "Another line ${SECOND}" >> ${YEARMONTH}.txt
+echo "${DELIMITER}${DUMP}" >> ${YEARMONTH}.txt
 
 git add -A
 git commit -m "yes sarge"

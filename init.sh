@@ -20,7 +20,7 @@ cp william.sh $HOME/bin/william.sh
 echo "> copied script"
 
 # insert new cron job
-echo "*/1 * * * * bash $HOME/bin/william.sh" >> mycron
+echo "01 22 * * * bash $HOME/bin/william.sh" >> mycron
 
 # install new cron file and get rid of the temp cron
 crontab mycron && rm mycron && echo "> removed cron"
