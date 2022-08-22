@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "Initializing William."
 
 # TASK: add william as a cronjob
