@@ -26,7 +26,7 @@ echo "> William is at your service."
 
 echo "> Setting up mackenzie"
 
-[ ! -d "$HOME/bin/mackenzie" ] && git clone https://github.com/middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie ready"
+[ ! -d "$HOME/bin/mackenzie" ] && git clone https://github.com/middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie repo is set up"
 
 # POST INSTALL OVERVIEW
 # =====================

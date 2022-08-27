@@ -3,24 +3,30 @@
 YEARMONTH=$(date +"%Y-%m")
 DELIMITER=","
 IS_EMPTY=$(watson report --day --csv)
+LOGFILE=$HOME/bin/william.log
+
+touch LOGFILE
 
 # check if watson tracked anything today
 if [ -z "${IS_EMPTY}" ]
 then
-    echo "> no work done on this machine today"
+    echo "> no work done on this machine today $(date)" >> LOGFILE
     exit 0
 fi
 
 # if we're here, watson did track something
-# change into macenzie dir, log work & push to github
+echo "some work done on this machine today $(date)" >> LOGFILE
+
+# change into mackenzie dir, log work & push to github
 cd $HOME/bin/mackenzie
 
 git pull
+echo "PULLED FROM GIT" >> LOGFILE
 
 # create log file if it doesn't exit
 if [[ ! -f "${YEARMONTH}.txt" ]]
 then 
-    touch ${YEARMONTH}.txt && echo "> today's log file created" && DELIMITER=""
+    touch ${YEARMONTH}.txt && echo "> this month's log file created" >> LOGFILE && DELIMITER=""
 fi
 
 DUMP=$(watson report --day --json)
