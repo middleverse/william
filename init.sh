@@ -27,8 +27,3 @@ echo "> William is at your service."
 echo "> Setting up mackenzie"
 
 [ ! -d "$HOME/bin/mackenzie" ] && git clone https://github.com/middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie repo is set up"
-
-# POST INSTALL OVERVIEW
-# =====================
-# a cron that runs daily at the specified
-# time above. Look in william.sh script for details.
