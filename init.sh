@@ -5,11 +5,6 @@ echo "Initializing William."
 # TASK: add william as a cronjob
 # ==============================
 
-# parse args
-export WILLAIM_PATH_TO_LOGGER=$1
-export WILLIAM_GITHUB_USERNAME=$2
-export WILLIAM_GITHUB_EMAIL=$3
-
 # save current crontab tasks
 crontab -l > mycron
 
@@ -18,7 +13,8 @@ crontab -l > mycron
 
 # copy script to store locally
 cp william.sh $HOME/bin/william.sh
-echo "> copied script"
+chmod +x $HOME/bin/william.sh
+echo "> copied script and made executable"
 
 # insert new cron job
 echo "01 22 * * * bash $HOME/bin/william.sh" >> mycron
