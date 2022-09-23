@@ -5,9 +5,6 @@ DELIMITER=","
 IS_EMPTY=$(watson report --day --csv)
 LOGFILE=$HOME/bin/william.log
 
-touch LOGFILE
-echo "$(watson report --day --csv)" >> LOGFILE
-
 # check if watson tracked anything today
 if [ -z "${IS_EMPTY}" ]
 then
