@@ -6,21 +6,21 @@ echo "Initializing William."
 # ==============================
 
 # save current crontab tasks
-crontab -l > mycron
+crontab -u $(whoami) -l > mycron
 
 # create cron storage directory
 [ ! -d "$HOME/bin" ] && mkdir $HOME/bin && echo "> bin created"
 
 # copy script to store locally
 cp william.sh $HOME/bin/william.sh
-chmod +x $HOME/bin/william.sh
+chmod a+x $HOME/bin/william.sh
 echo "> copied script and made executable"
 
 # insert new cron job
-echo "01 22 * * * bash $HOME/bin/william.sh" >> mycron
+echo "01 22 * * * cd $HOME/bin && ./william.sh" >> mycron
 
 # install new cron file and get rid of the temp cron
-crontab mycron && rm mycron && echo "> removed cron"
+crontab -u $(whoami) mycron && rm mycron && echo "> removed cron"
 
 echo "> William is at your service."
 
