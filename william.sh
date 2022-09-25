@@ -37,4 +37,4 @@ echo "${DELIMITER}${DUMP}" >> ${YEARMONTH}.txt
 # push changes
 git add -A
 git commit -m "yes sarge"
-echo git push >> $LOGFILE && echo "PUSHED TO GITHUB" >> $LOGFILE
+git push
