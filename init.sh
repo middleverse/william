@@ -1,29 +1,30 @@
 #!/bin/bash
 
-echo "Initializing William."
+USER=$(whoami)
+USERHOME=/Users/$USER
 
-# TASK: add william as a cronjob
-# ==============================
+echo "> Initializing William for $USER."
 
 # save current crontab tasks
-crontab -u $(whoami) -l > mycron
+sudo crontab -u $USER -l > mycron
 
 # create cron storage directory
-[ ! -d "$HOME/bin" ] && mkdir $HOME/bin && echo "> bin created"
+[ ! -d "$USERHOME/bin" ] && mkdir $USERHOME/bin && echo "> bin created"
 
 # copy script to store locally
-cp william.sh $HOME/bin/william.sh
-chmod a+x $HOME/bin/william.sh
-echo "> copied script and made executable"
+cp william.sh $USERHOME/bin/william.sh
+chmod a+x $USERHOME/bin/william.sh && echo "> copied script and made executable"
+
+echo ">>>>>> $HOME and $USERHOME"
 
 # insert new cron job
-echo "01 22 * * * cd $HOME/bin && ./william.sh" >> mycron
+echo "01 22 * * * cd $USERHOME/bin && ./william.sh" >> mycron
 
 # install new cron file and get rid of the temp cron
-crontab -u $(whoami) mycron && rm mycron && echo "> removed cron"
+sudo crontab -u $USER mycron && rm mycron && echo "> added cron to $USER's crontab"
 
 echo "> William is at your service."
 
 echo "> Setting up mackenzie"
 
-[ ! -d "$HOME/bin/mackenzie" ] && git clone https://github.com/middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie repo is set up"
+[ ! -d "$USERHOME/bin/mackenzie" ] && git clone git@github.com:middleverse/mackenzie.git $HOME/bin/mackenzie && echo "> mackenzie repo is set up"
