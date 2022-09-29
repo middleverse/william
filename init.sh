@@ -2,6 +2,7 @@
 
 USER=$(whoami)
 USERHOME=/Users/$USER
+WILLIAMPATH=$USERHOME/bin/william
 
 echo "> Initializing William for $USER."
 
@@ -10,15 +11,14 @@ sudo crontab -u $USER -l > mycron
 
 # create cron storage directory
 [ ! -d "$USERHOME/bin" ] && mkdir $USERHOME/bin && echo "> bin created"
+[ ! -d "$USERHOME/bin/william" ] && mkdir $USERHOME/bin/william && echo "> william dir created"
 
 # copy script to store locally
-cp william.sh $USERHOME/bin/william.sh
-chmod a+x $USERHOME/bin/william.sh && echo "> copied script and made executable"
-
-echo ">>>>>> $HOME and $USERHOME"
+cp william.sh $WILLIAMPATH/william.sh
+chmod a+x $WILLIAMPATH/william.sh && echo "> copied script and made executable"
 
 # insert new cron job
-echo "01 22 * * * cd $USERHOME/bin && ./william.sh" >> mycron
+echo "01 22 * * * cd $WILLIAMPATH && ./william.sh" >> mycron
 
 # install new cron file and get rid of the temp cron
 sudo crontab -u $USER mycron && rm mycron && echo "> added cron to $USER's crontab"

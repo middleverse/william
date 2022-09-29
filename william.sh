@@ -4,7 +4,7 @@ YEARMONTH=$(date +"%Y-%m")
 DELIMITER=","
 WATSON=$(which watson)
 IS_EMPTY=$($WATSON report --day --csv)
-LOGFILE=$HOME/bin/william.log
+LOGFILE=$HOME/bin/william/william.log
 
 # check if watson tracked anything today
 if [ -z "${IS_EMPTY}" ]
