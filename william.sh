@@ -2,7 +2,7 @@
 
 YEARMONTH=$(date +"%Y-%m")
 DELIMITER=","
-WATSON=/opt/homebrew/bin/watson
+WATSON=$(which watson)
 IS_EMPTY=$($WATSON report --day --csv)
 LOGFILE=$HOME/bin/william.log
 
