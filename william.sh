@@ -17,12 +17,12 @@ echo "> some work done on this machine today $(date)" >> $LOGFILE
 # change into mackenzie dir, log work & push to github
 cd $MACKENZIE
 
-git pull && echo "PULLED FROM GITHUB" >> $LOGFILE
+git pull
 
-# create timesheet if it doesn't exit
+# create monthly timesheet if it doesn't exist
 if [[ ! -f "${YEARMONTH}.txt" ]]
 then 
-    touch ${YEARMONTH}.txt && echo "> this month's log file created" >> $LOGFILE && DELIMITER=""
+    touch ${YEARMONTH}.txt && DELIMITER=""
 fi
 
 DUMP=$($WATSON report --day --json)
