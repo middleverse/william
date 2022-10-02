@@ -21,24 +21,18 @@ cd $MACKENZIE
 git pull
 
 # create yearly named directory to store monthly timesheets
-if [ ! -d "$YEAR" ]
-then
-    mkdir $YEAR
-fi
+[ ! -d "$YEAR" ] && mkdir $YEAR
 
 cd $YEAR
 
 # create monthly timesheet if it doesn't exist
-if [[ ! -f "${MONTH}.txt" ]]
-then 
-    touch ${MONTH}.txt && DELIMITER=""
-fi
+[ ! -f "${MONTH}.txt" ] && touch ${MONTH}.txt && DELIMITER=""
 
-DUMP=$($WATSON report --day --json)
+WORK=$($WATSON report --day --json)
 
 # concatenate JSON to appropriate file
 # note: the delimiter is for valid JSON, it's a comma is the file already contains JSON
-echo "${DELIMITER}${DUMP}" >> ${MONTH}.txt
+echo "${DELIMITER}${WORK}" >> ${MONTH}.txt
 
 # push changes
 git add -A
