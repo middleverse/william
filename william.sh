@@ -1,7 +1,8 @@
 #!/bin/bash
 source .env
 
-YEARMONTH=$(date +"%Y-%m")
+YEAR=$(date +"%Y")
+MONTH=$(date +"%m")
 DELIMITER=","
 
 # check if watson tracked anything today
@@ -19,17 +20,25 @@ cd $MACKENZIE
 
 git pull
 
+# create yearly named directory to store monthly timesheets
+if [ ! -d "$YEAR" ]
+then
+    mkdir $YEAR
+fi
+
+cd $YEAR
+
 # create monthly timesheet if it doesn't exist
-if [[ ! -f "${YEARMONTH}.txt" ]]
+if [[ ! -f "${MONTH}.txt" ]]
 then 
-    touch ${YEARMONTH}.txt && DELIMITER=""
+    touch ${MONTH}.txt && DELIMITER=""
 fi
 
 DUMP=$($WATSON report --day --json)
 
 # concatenate JSON to appropriate file
 # note: the delimiter is for valid JSON, it's a comma is the file already contains JSON
-echo "${DELIMITER}${DUMP}" >> ${YEARMONTH}.txt
+echo "${DELIMITER}${DUMP}" >> ${MONTH}.txt
 
 # push changes
 git add -A
