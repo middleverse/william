@@ -1,26 +1,23 @@
 #!/bin/bash
+source .env
 
 YEARMONTH=$(date +"%Y-%m")
 DELIMITER=","
-WATSON=$(which watson)
-IS_EMPTY=$($WATSON report --day --csv)
-LOGFILE=$HOME/bin/william/william.log
 
 # check if watson tracked anything today
-if [ -z "${IS_EMPTY}" ]
+if [ -z "$($WATSON report --day --csv)" ]
 then
     echo "> no work done on ( $(whoami) ) :: $(date)" >> $LOGFILE
     exit 0
 fi
 
 # if we're here, watson did track something
-echo "some work done on this machine today $(date)" >> $LOGFILE
+echo "> some work done on this machine today $(date)" >> $LOGFILE
 
 # change into mackenzie dir, log work & push to github
-cd $HOME/bin/mackenzie
+cd $MACKENZIE
 
-git pull
-echo "PULLED FROM GITHUB" >> $LOGFILE
+git pull && echo "PULLED FROM GITHUB" >> $LOGFILE
 
 # create timesheet if it doesn't exit
 if [[ ! -f "${YEARMONTH}.txt" ]]
