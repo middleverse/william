@@ -2,6 +2,8 @@
 
 **william** is a daily chron that aggregates [watson](https://tailordev.github.io/Watson/) tracking data from dev machines configured for the task, and pushes to github on days worked.
 
+If you'd like to read about William's architecture & how to build one for your own, you can do so [here](https://middleverse.dev/blog/1-building-a-semi-automated-productivity-tracking-bot-for-macos-linux).
+
 ## Pre-Installation
 
 ### Install Watson
@@ -16,13 +18,8 @@ Make sure to have [watson](https://tailordev.github.io/Watson/) installed.
 
 ## Installation
 
-- `bash init.sh /path/to/repo -h <hour> -m <minute>`
-- The above command installs the script in `/usr/local/bin/` with the full script path as `/usr/local/bin/william.sh`.
-
-**Example**:
-
-- `bash init.sh /arshi/documents/my_log_repo -h 22 -m 08`
-- The above example results in the william cron running every day at 10:08 PM (22:08 hours).
+- `bash init.sh`
+- The above command installs the script in `$HOME/bin/william/` with the full script path as `$HOME/bin/william/william.sh`.
 
 ## Post-Installation
 
