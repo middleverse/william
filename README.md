@@ -2,7 +2,7 @@
 
 **william** is a daily chron that aggregates [watson](https://tailordev.github.io/Watson/) tracking data from dev machines configured for the task, and pushes to github on days worked.
 
-If you'd like to read about William's architecture & how to build one for your own, you can do so [here](https://middleverse.dev/blog/1-building-a-semi-automated-productivity-tracking-bot-for-macos-linux).
+If you'd like to read about William's architecture & how to build one for your own, you can do so [here](https://dev.to/middleverse/building-a-semi-automated-productivity-tracking-bot-shell-linux-github-watson-392p).
 
 ## Pre-Installation
 
